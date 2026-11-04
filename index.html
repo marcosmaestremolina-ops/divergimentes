@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Divergimentes | Para una sociedad más inclusiva y participativa</title>
+<meta name="description" content="Divergimentes es una asociación comprometida con la inclusión social de personas neurodivergentes, jóvenes y mujeres.">
+<meta property="og:title" content="Divergimentes">
+<meta property="og:description" content="...para una sociedad más inclusiva y participativa...">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧠</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ===== DIVERGIMENTES · estilos v2 (edita aquí colores y tamaños) ===== */
+:root{--purple:#6D28D9;--pl:#A78BFA;--mag:#DB2777;--magl:#F472B6;--teal:#0D9488;--tl:#2DD4BF;--amber:#D97706;
+--dark:#070512;--d2:#0E0B1E;--d3:#160F2B;--muted:rgba(255,255,255,.6);--sub:rgba(255,255,255,.08);--bd:rgba(255,255,255,.1);
+--fh:'Outfit',sans-serif;--fb:'Inter',sans-serif;--g:linear-gradient(135deg,#6D28D9,#DB2777);--rx:44px;--rb:60% 40% 55% 45%/45% 55% 45% 55%}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--fb);background:var(--dark);color:#fff;line-height:1.7;overflow-x:hidden}
+a{text-decoration:none;color:inherit}ul{list-style:none}
+::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:var(--dark)}::-webkit-scrollbar-thumb{background:var(--purple);border-radius:3px}
+section{padding:110px 40px;position:relative;overflow:hidden}
+.container{max-width:1240px;margin:0 auto;position:relative;z-index:2}
+#progress{position:fixed;top:0;left:0;height:3px;width:0;background:var(--g);z-index:9999;pointer-events:none}
+.grd{background:var(--g);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.sec-label{display:inline-flex;align-items:center;gap:10px;font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.13em;margin-bottom:14px;color:var(--tl)}
+.sec-label::before{content:'';width:28px;height:2.5px;background:currentColor;border-radius:2px}
+.sec-title{font-family:var(--fh);font-size:clamp(1.9rem,3.5vw,3.1rem);font-weight:800;line-height:1.15;letter-spacing:-.025em;margin-bottom:18px}
+.sec-sub{color:var(--muted);line-height:1.85;max-width:600px}
+.center{text-align:center}.center .sec-sub{margin:0 auto}.center .sec-label{justify-content:center}
+.reveal{opacity:0;transform:translateY(44px);transition:opacity .75s,transform .75s}
+.reveal.visible{opacity:1;transform:none}
+.d1{transition-delay:.1s}.d2{transition-delay:.22s}.d3{transition-delay:.34s}.d4{transition-delay:.46s}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:15px 32px;border-radius:50px;font-family:var(--fh);font-weight:700;font-size:.95rem;cursor:pointer;border:0;transition:all .35s}
+.btn-primary{background:var(--g);box-shadow:0 8px 32px rgba(219,39,119,.45)}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 16px 48px rgba(219,39,119,.6)}
+.btn-outline{background:transparent;border:1.5px solid rgba(255,255,255,.25);font-weight:600}
+.btn-outline:hover{background:rgba(255,255,255,.09);transform:translateY(-3px)}
+/* Navbar */
+#navbar{position:fixed;top:0;left:0;width:100%;z-index:1000;padding:22px 0;transition:all .5s}
+#navbar.scrolled{padding:12px 0;background:rgba(7,5,18,.8);backdrop-filter:blur(28px) saturate(180%);-webkit-backdrop-filter:blur(28px) saturate(180%);border-bottom:1px solid var(--bd)}
+.nav-inner{max-width:1240px;margin:0 auto;padding:0 40px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.logo{display:flex;align-items:center;gap:14px;font-family:var(--fh);font-size:1.45rem;font-weight:800}
+.logo-blob{width:44px;height:44px;background:var(--g);display:flex;align-items:center;justify-content:center;font-size:1.3rem;animation:morph 8s ease-in-out infinite;box-shadow:0 4px 20px rgba(109,40,217,.5)}
+.nav-links{display:flex;align-items:center;gap:6px}
+.nav-links a{font-family:var(--fh);font-size:.88rem;font-weight:500;padding:8px 18px;border-radius:50px;color:rgba(255,255,255,.75);transition:all .3s}
+.nav-links a:hover,.nav-links a.active{color:#fff;background:var(--sub)}
+.nav-links a.nav-cta{background:var(--g);color:#fff;font-weight:700;box-shadow:0 4px 24px rgba(219,39,119,.45)}
+.burger{display:none;flex-direction:column;gap:6px;padding:8px;border:0;background:none;cursor:pointer}
+.burger span{width:26px;height:2px;background:#fff;border-radius:2px;transition:all .3s}
+.burger.active span:nth-child(1){transform:translateY(8px) rotate(45deg)}
+.burger.active span:nth-child(2){opacity:0}
+.burger.active span:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:998;backdrop-filter:blur(6px);opacity:0;pointer-events:none;transition:opacity .3s}
+.overlay.active{opacity:1;pointer-events:auto}
+.mmenu{position:fixed;top:0;right:-100%;width:78%;max-width:360px;height:100vh;background:var(--d3);border-left:1px solid var(--bd);z-index:999;padding:96px 28px 40px;display:flex;flex-direction:column;gap:6px;transition:right .4s}
+.mmenu.active{right:0}
+.mmenu a{font-family:var(--fh);font-size:1.1rem;padding:14px 20px;border-radius:20px;color:rgba(255,255,255,.85)}
+.mmenu a:hover{background:var(--sub)}
+/* Hero */
+#hero{min-height:100vh;display:flex;align-items:center;padding:0}
+.mesh{position:absolute;inset:0;background-image:linear-gradient(rgba(109,40,217,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(109,40,217,.07) 1px,transparent 1px);background-size:60px 60px;-webkit-mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,#000 30%,transparent 100%);mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,#000 30%,transparent 100%)}
+.blob-bg{position:absolute;filter:blur(100px);opacity:.45;animation:float 12s ease-in-out infinite;pointer-events:none}
+.b1{width:700px;height:700px;background:radial-gradient(circle,#6D28D9,transparent 70%);top:-200px;left:-200px}
+.b2{width:500px;height:500px;background:radial-gradient(circle,#DB2777,transparent 70%);bottom:-150px;right:0;animation-delay:3s}
+.b3{width:350px;height:350px;background:radial-gradient(circle,#0D9488,transparent 70%);top:40%;left:55%;animation-delay:6s}
+#particles{position:absolute;inset:0;pointer-events:none}
+.particle{position:absolute;border-radius:50%;background:#fff;animation:drift linear infinite}
+.hero-content{position:relative;z-index:10;max-width:1240px;margin:0 auto;padding:130px 40px 100px;display:grid;grid-template-columns:55% 45%;gap:60px;align-items:center;width:100%}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;padding:8px 20px;margin-bottom:28px;border-radius:50px;font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:rgba(109,40,217,.15);border:1px solid rgba(109,40,217,.35);color:var(--pl)}
+.hero-title{font-family:var(--fh);font-size:clamp(2.6rem,5.5vw,5rem);font-weight:900;line-height:1.05;letter-spacing:-.03em;margin-bottom:26px}
+.hero-desc{font-size:1.1rem;line-height:1.85;color:var(--muted);max-width:500px;margin-bottom:40px}
+.hero-actions{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:52px}
+.hero-stats{display:flex;border:1px solid var(--bd);border-radius:var(--rx);background:var(--sub);backdrop-filter:blur(16px);overflow:hidden;width:fit-content}
+.stat{padding:18px 30px;text-align:center;position:relative}
+.stat+.stat::before{content:'';position:absolute;left:0;top:20%;bottom:20%;width:1px;background:var(--bd)}
+.stat-num{font-family:var(--fh);font-size:1.9rem;font-weight:800;line-height:1}
+.stat-lbl{font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-top:4px}
+.hero-visual{position:relative;height:480px;display:flex;align-items:center;justify-content:center}
+.orbit{position:absolute;border-radius:50%;border:1px solid rgba(109,40,217,.2);animation:spin linear infinite}
+.o1{width:340px;height:340px;animation-duration:20s}
+.o2{width:460px;height:460px;animation-duration:32s;animation-direction:reverse;border:1px dashed rgba(219,39,119,.15)}
+.orbit i{position:absolute;top:-6px;left:50%;width:12px;height:12px;border-radius:50%;background:var(--g);box-shadow:0 0 40px rgba(109,40,217,.6)}
+.blob-card{width:250px;height:250px;background:linear-gradient(135deg,rgba(109,40,217,.3),rgba(219,39,119,.2));border:1px solid rgba(109,40,217,.4);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:28px;animation:morph 8s ease-in-out infinite;box-shadow:0 0 80px rgba(109,40,217,.3);backdrop-filter:blur(20px);z-index:5}
+.blob-card span{font-size:3.4rem}.blob-card h3{font-family:var(--fh);font-size:1.05rem;margin:6px 0}.blob-card p{font-size:.76rem;color:var(--muted);line-height:1.5}
+.sat{position:absolute;z-index:10;background:rgba(14,11,30,.75);border:1px solid var(--bd);backdrop-filter:blur(20px);border-radius:28px;padding:12px 18px;display:flex;align-items:center;gap:12px;animation:bob 5s ease-in-out infinite;white-space:nowrap}
+.sat.s1{bottom:50px;left:-20px}.sat.s2{top:40px;right:-10px;animation-delay:2s}
+.sat b{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:rgba(13,148,136,.25);font-weight:400}
+.sat.s2 b{background:rgba(219,39,119,.25)}
+.sat small{display:block;font-size:.68rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.sat strong{font-family:var(--fh);font-size:.88rem}
+.scroll-cue{position:absolute;bottom:34px;left:50%;transform:translateX(-50%);z-index:10;color:var(--muted);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;animation:bob 2.4s ease-in-out infinite}
+/* Valores */
+#valores{background:var(--d2)}
+#valores::before{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(109,40,217,.15) 1.5px,transparent 1.5px);background-size:36px 36px}
+.valores-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:60px}
+.val-card{position:relative;padding:44px 40px;background:var(--d3);border:1px solid var(--bd);border-radius:var(--rx);overflow:hidden;transition:all .4s}
+.val-card::before{content:'';position:absolute;top:-60px;left:-60px;width:180px;height:180px;border-radius:50%;background:var(--vc);opacity:.15;filter:blur(30px);transition:opacity .4s}
+.val-card:hover{transform:translateY(-10px);border-color:var(--vc);box-shadow:0 24px 64px rgba(0,0,0,.5)}
+.val-card:hover::before{opacity:.4}
+.vc-p{--vc:#6D28D9}.vc-k{--vc:#DB2777}.vc-t{--vc:#0D9488}.vc-a{--vc:#D97706}
+.val-icon{width:68px;height:68px;border-radius:55% 45% 60% 40%/50% 55% 45% 50%;background:color-mix(in srgb,var(--vc) 22%,transparent);border:1px solid color-mix(in srgb,var(--vc) 45%,transparent);display:flex;align-items:center;justify-content:center;font-size:1.9rem;margin-bottom:26px;position:relative;transition:all .5s}
+.val-card:hover .val-icon{border-radius:40% 60% 45% 55%/60% 40% 60% 40%;transform:scale(1.1) rotate(-5deg)}
+.val-card h3{font-family:var(--fh);font-size:1.2rem;margin-bottom:12px;position:relative}
+.val-card p{font-size:.92rem;color:var(--muted);line-height:1.8;position:relative}
+/* Quiénes */
+.quienes-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.q-quote{margin:26px 0;padding:24px 28px;background:linear-gradient(135deg,rgba(109,40,217,.12),rgba(219,39,119,.08));border-left:3px solid var(--mag);border-radius:0 20px 20px 0;font-style:italic;color:rgba(255,255,255,.78);font-size:.95rem;line-height:1.85}
+.obj-list{display:flex;flex-direction:column;gap:10px;margin:22px 0 28px}
+.obj-item{display:flex;align-items:flex-start;gap:14px;padding:14px 18px;background:var(--sub);border:1px solid var(--bd);border-radius:20px;transition:all .35s}
+.obj-item:hover{border-color:rgba(109,40,217,.4);background:rgba(109,40,217,.08);transform:translateX(8px)}
+.obj-num{width:32px;height:32px;border-radius:9px;flex-shrink:0;background:var(--g);display:flex;align-items:center;justify-content:center;font-size:.95rem}
+.obj-item p{font-size:.9rem;color:rgba(255,255,255,.78);line-height:1.65}
+.pills{display:flex;flex-wrap:wrap;gap:10px}
+.pill{padding:7px 18px;border-radius:50px;font-size:.8rem;font-weight:600;border:1.5px solid}
+.pill.p{color:var(--pl);border-color:rgba(109,40,217,.5);background:rgba(109,40,217,.1)}
+.pill.t{color:var(--tl);border-color:rgba(13,148,136,.5);background:rgba(13,148,136,.1)}
+.pill.m{color:var(--magl);border-color:rgba(219,39,119,.5);background:rgba(219,39,119,.1)}
+.team-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.team-card{background:var(--d3);border:1px solid var(--bd);border-radius:var(--rx);padding:28px 22px;text-align:center;transition:all .4s}
+.team-card:hover{transform:translateY(-8px);border-color:rgba(109,40,217,.4);box-shadow:0 20px 50px rgba(0,0,0,.4)}
+.t-avatar{width:72px;height:72px;margin:0 auto 16px;border-radius:var(--rb);display:flex;align-items:center;justify-content:center;font-family:var(--fh);font-size:1.7rem;font-weight:900;animation:morph 8s ease-in-out infinite}
+.ta1{background:linear-gradient(135deg,#6D28D9,#DB2777)}.ta2{background:linear-gradient(135deg,#DB2777,#D97706);animation-delay:2s}.ta3{background:linear-gradient(135deg,#0D9488,#6D28D9);animation-delay:4s}.ta4{background:linear-gradient(135deg,#D97706,#DB2777);animation-delay:6s}
+.team-card h4{font-family:var(--fh);margin-bottom:8px}.team-card p{font-size:.8rem;color:var(--muted);font-style:italic;line-height:1.6}
+/* Proyectos / Blog */
+#proyectos{background:var(--d2)}
+.proy-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:50px}
+.card{background:var(--d3);border:1px solid var(--bd);border-radius:var(--rx);overflow:hidden;display:flex;flex-direction:column;transition:all .45s}
+.card:hover{transform:translateY(-10px);box-shadow:0 32px 80px rgba(0,0,0,.55);border-color:rgba(219,39,119,.35)}
+.thumb{position:relative;height:200px;display:flex;align-items:center;justify-content:center;font-size:4.2rem;overflow:hidden}
+.thumb::after{content:'';position:absolute;bottom:-1px;left:0;right:0;height:30px;background:var(--d3);clip-path:ellipse(60% 100% at 50% 100%)}
+.pb1{background:linear-gradient(135deg,#160F2B,#2E1065,#4C1D95)}.pb2{background:linear-gradient(135deg,#1a0525,#831843,#9D174D)}.pb3{background:linear-gradient(135deg,#042f2e,#134e4a,#0F766E)}
+.pb4{background:linear-gradient(135deg,#1a0a3c,#3d0f6b)}.pb5{background:linear-gradient(135deg,#0a2240,#0f4070)}.pb6{background:linear-gradient(135deg,#0d3320,#155230)}.pb7{background:linear-gradient(135deg,#2a1a0a,#4a2a0a)}
+.tag{position:absolute;top:14px;right:14px;z-index:2;padding:4px 13px;border-radius:50px;font-size:.7rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;background:rgba(109,40,217,.35);color:var(--pl);border:1px solid rgba(109,40,217,.5)}
+.body{padding:24px 28px 28px;flex:1;display:flex;flex-direction:column}
+.body h3{font-family:var(--fh);font-size:1.1rem;margin-bottom:12px;line-height:1.4}
+.body p{font-size:.88rem;color:var(--muted);line-height:1.75;flex:1;margin-bottom:22px}
+.date{font-size:.73rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px}
+.more{font-size:.88rem;font-weight:700;color:var(--pl);transition:all .3s;width:fit-content}
+.more:hover{color:var(--magl);padding-left:6px}
+#blog{background:var(--dark)}
+.blog-top{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:48px}
+.blog-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:22px}
+.blog-grid .featured{grid-row:span 2}.blog-grid .featured .thumb{height:260px}
+.blog-grid .featured h3{font-size:1.35rem}
+.blog-grid .more{color:var(--tl)}
+/* Glosario */
+#glosario{background:linear-gradient(160deg,#0d0721,#0a1f18 50%,#120720)}
+.glos-layout{display:grid;grid-template-columns:1fr 2fr;gap:80px;align-items:center}
+.glos-emoji{font-size:6.5rem;display:block;margin-bottom:20px;filter:drop-shadow(0 0 30px rgba(13,148,136,.5))}
+.glos-terms{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.term{background:rgba(13,148,136,.07);border:1px solid rgba(13,148,136,.22);border-radius:28px;padding:20px 22px;transition:all .35s}
+.term:hover{transform:scale(1.03);border-color:rgba(13,148,136,.55);background:rgba(13,148,136,.12)}
+.term b{display:block;font-family:var(--fh);color:var(--tl);margin-bottom:6px}
+.term span{font-size:.82rem;color:var(--muted);line-height:1.65}
+/* Territorio */
+#territorio{background:var(--d2);text-align:center}
+.terr-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:52px}
+.terr-card{background:var(--d3);border:1px solid var(--bd);border-radius:var(--rx);padding:44px 28px;transition:all .4s;position:relative;overflow:hidden}
+.terr-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:var(--g);transform:scaleX(0);transform-origin:left;transition:transform .4s}
+.terr-card:hover{transform:translateY(-10px)}.terr-card:hover::before{transform:scaleX(1)}
+.terr-card span{font-size:3rem;display:block;margin-bottom:14px}
+.terr-card h3{font-family:var(--fh);margin-bottom:8px}.terr-card p{font-size:.88rem;color:var(--muted)}
+/* CTA */
+#cta{padding:80px 40px 120px}
+.cta-box{border-radius:var(--rx);padding:90px 60px;text-align:center;background:radial-gradient(ellipse 60% 80% at 20% 50%,rgba(109,40,217,.3),transparent),radial-gradient(ellipse 60% 80% at 80% 50%,rgba(219,39,119,.25),transparent),var(--d3);border:1px solid rgba(109,40,217,.4)}
+.cta-box h2{font-family:var(--fh);font-size:clamp(2rem,4vw,3.2rem);font-weight:900;letter-spacing:-.025em;margin-bottom:18px}
+.cta-box p{color:var(--muted);max-width:540px;margin:0 auto 40px;line-height:1.85}
+.cta-btns{display:flex;justify-content:center;gap:16px;flex-wrap:wrap}
+/* Footer */
+footer{background:#030209;border-top:1px solid var(--bd);padding:70px 40px 40px}
+.footer-grid{max-width:1240px;margin:0 auto 50px;display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:48px}
+.footer-grid .logo{margin-bottom:18px;font-size:1.4rem}
+.footer-grid p{font-size:.88rem;color:var(--muted);line-height:1.75;margin-bottom:24px}
+.socials{display:flex;gap:10px;flex-wrap:wrap}
+.socials a{width:40px;height:40px;border-radius:10px;background:var(--sub);border:1px solid var(--bd);display:flex;align-items:center;justify-content:center;color:var(--muted);transition:all .35s}
+.socials a:hover{background:var(--g);color:#fff;transform:translateY(-4px)}
+.footer-grid h4{font-family:var(--fh);font-size:.82rem;text-transform:uppercase;letter-spacing:.1em;margin-bottom:20px}
+.footer-grid li{margin-bottom:10px}.footer-grid li a{font-size:.88rem;color:var(--muted);transition:all .3s}.footer-grid li a:hover{color:#fff;padding-left:8px}
+.footer-bottom{max-width:1240px;margin:0 auto;border-top:1px solid var(--bd);padding-top:30px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:.8rem;color:rgba(255,255,255,.4)}
+.footer-bottom a{color:var(--pl)}
+/* Animaciones */
+@keyframes morph{0%,100%{border-radius:62% 38% 55% 45%/48% 52% 45% 55%}25%{border-radius:45% 55% 38% 62%/55% 45% 55% 45%}50%{border-radius:55% 45% 62% 38%/38% 62% 38% 62%}75%{border-radius:38% 62% 45% 55%/62% 38% 62% 38%}}
+@keyframes float{0%,100%{transform:translate(0,0)}33%{transform:translate(30px,-40px)}66%{transform:translate(-20px,30px)}}
+@keyframes drift{0%{transform:translateY(110vh);opacity:0}10%{opacity:.7}90%{opacity:.5}100%{transform:translateY(-100px);opacity:0}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+/* Responsive */
+@media(max-width:1024px){.hero-content{grid-template-columns:1fr}.hero-visual{display:none}.proy-grid,.blog-grid{grid-template-columns:1fr 1fr}.blog-grid .featured{grid-column:span 2;grid-row:auto}.glos-layout{grid-template-columns:1fr;gap:48px}.footer-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:768px){section{padding:70px 24px}.nav-links{display:none}.burger{display:flex}.nav-inner{padding:0 24px}.hero-content{padding:130px 24px 90px}.valores-grid,.quienes-grid,.proy-grid,.blog-grid,.terr-grid,.glos-terms,.footer-grid{grid-template-columns:1fr}.blog-grid .featured{grid-column:auto}.hero-stats{flex-direction:column;width:100%}.stat+.stat::before{display:none}.cta-box{padding:56px 24px}.footer-bottom{flex-direction:column;text-align:center}.scroll-cue{display:none}}
+@media(max-width:480px){.hero-actions{flex-direction:column}.team-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+
+<!-- ===== NAVBAR ===== -->
+<nav id="navbar"><div class="nav-inner">
+  <a href="#hero" class="logo"><span class="logo-blob">🧠</span>Divergimentes</a>
+  <div class="nav-links">
+    <a href="#hero" class="active">Inicio</a><a href="#valores">Valores</a><a href="#quienes">¿Quiénes somos?</a><a href="#proyectos">Proyectos</a><a href="#blog">Blog</a><a href="#cta" class="nav-cta">Contacto</a>
+  </div>
+  <button class="burger" id="burger" aria-label="Abrir menú" aria-expanded="false"><span></span><span></span><span></span></button>
+</div></nav>
+<div class="overlay" id="overlay"></div>
+<div class="mmenu" id="mmenu">
+  <a href="#hero">Inicio</a><a href="#valores">Valores</a><a href="#quienes">¿Quiénes somos?</a><a href="#proyectos">Proyectos</a><a href="#blog">Blog</a><a href="#cta">Contacto</a>
+</div>
+
+<!-- ===== HERO ===== -->
+<section id="hero">
+  <div class="mesh"></div>
+  <div class="blob-bg b1"></div><div class="blob-bg b2"></div><div class="blob-bg b3"></div>
+  <div id="particles"></div>
+  <div class="hero-content">
+    <div class="reveal">
+      <div class="eyebrow">🌍 Andalucía, España</div>
+      <h1 class="hero-title">Para una sociedad<br><span class="grd">más inclusiva</span><br>y participativa</h1>
+      <p class="hero-desc">Trabajamos por la inclusión social y económica de las personas neurodivergentes, los jóvenes y la mujer. Porque la diversidad es nuestra mayor fortaleza.</p>
+      <div class="hero-actions">
+        <a href="#proyectos" class="btn btn-primary">Ver nuestros proyectos →</a>
+        <a href="#quienes" class="btn btn-outline">Conoce el equipo</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><div class="stat-num grd">3</div><div class="stat-lbl">Proyectos activos</div></div>
+        <div class="stat"><div class="stat-num grd">4</div><div class="stat-lbl">Miembros del equipo</div></div>
+        <div class="stat"><div class="stat-num grd">100%</div><div class="stat-lbl">Compromiso social</div></div>
+      </div>
+    </div>
+    <div class="hero-visual reveal d2">
+      <div class="orbit o1"><i></i></div><div class="orbit o2"><i></i></div>
+      <div class="blob-card"><span>🧠</span><h3>Neurodiversidad</h3><p>Cada mente funciona de forma única. Es una riqueza, no una limitación.</p></div>
+      <div class="sat s1"><b>🌿</b><div><small>Territorio</small><strong>El Ejido · Almócita</strong></div></div>
+      <div class="sat s2"><b>✊</b><div><small>Misión</small><strong>Inclusión real</strong></div></div>
+    </div>
+  </div>
+  <div class="scroll-cue" onclick="document.getElementById('valores').scrollIntoView({behavior:'smooth'})">Explorar ↓</div>
+</section>
+
+<!-- ===== VALORES ===== -->
+<section id="valores"><div class="container">
+  <div class="center reveal">
+    <div class="sec-label">Nuestros valores</div>
+    <h2 class="sec-title">¿Por qué hacemos lo que hacemos?</h2>
+    <p class="sec-sub">Nuestra razón de ser nace de la convicción de que una sociedad más justa es posible cuando todas las voces son escuchadas y valoradas.</p>
+  </div>
+  <div class="valores-grid">
+    <div class="val-card vc-p reveal d1"><div class="val-icon">🧬</div><h3>Inclusión neurodivergente</h3><p>Promovemos la participación plena de las personas neurodivergentes en la vida política, económica, cultural y social. Combatimos mitos y estigmas relacionados con la salud mental.</p></div>
+    <div class="val-card vc-k reveal d2"><div class="val-icon">👩‍🦱</div><h3>Empoderamiento de la mujer</h3><p>Trabajamos para que las mujeres tengan presencia e integración plena en todos los ámbitos de la vida. La igualdad de oportunidades no es negociable.</p></div>
+    <div class="val-card vc-t reveal d3"><div class="val-icon">🚀</div><h3>Protagonismo juvenil</h3><p>Facilitamos herramientas y espacios para que los jóvenes sean los motores del cambio social. Creemos en su potencial transformador.</p></div>
+    <div class="val-card vc-a reveal d4"><div class="val-icon">🌱</div><h3>Desarrollo sostenible</h3><p>Promovemos la biodiversidad, el desarrollo rural sostenible y la conciencia ecológica global como parte integral de nuestra misión.</p></div>
+  </div>
+</div></section>
+
+<!-- ===== QUIÉNES SOMOS ===== -->
+<section id="quienes"><div class="container"><div class="quienes-grid">
+  <div class="reveal">
+    <div class="sec-label">Quiénes somos</div>
+    <h2 class="sec-title">Una asociación con <span class="grd">corazón y propósito</span></h2>
+    <blockquote class="q-quote">"DIVERGIMENTES es el producto final de sueños marinados en experiencias vitales durante muchos años, conversaciones nocturnas inspiradoras, y, sobre todo, de unas ganas de <em>'ser el cambio que queremos ver en el mundo'</em>."</blockquote>
+    <div class="sec-label" style="color:var(--pl);margin-top:20px">Nuestros objetivos estatutarios</div>
+    <div class="obj-list">
+      <div class="obj-item"><div class="obj-num">♀</div><p>Promover la participación e integración de la <strong>mujer</strong> en la vida política, económica, cultural y social.</p></div>
+      <div class="obj-item"><div class="obj-num">🌱</div><p>Promover la participación e integración de los <strong>jóvenes</strong> como motores de la sociedad.</p></div>
+      <div class="obj-item"><div class="obj-num">🧠</div><p>Promover la participación e integración de las <strong>personas neurodivergentes</strong> en todos los ámbitos.</p></div>
+      <div class="obj-item"><div class="obj-num">🌿</div><p>Promover la <strong>biodiversidad, el desarrollo sostenible y la conciencia ecológica global</strong>.</p></div>
+    </div>
+    <div class="sec-label">Nuestra metodología</div>
+    <div class="pills"><span class="pill p">Educación no formal</span><span class="pill t">Educación informal</span><span class="pill m">Learning by doing</span></div>
+  </div>
+  <div class="reveal d2">
+    <div class="sec-label" style="margin-bottom:26px">El equipo</div>
+    <div class="team-grid">
+      <div class="team-card"><div class="t-avatar ta1">B</div><h4>Basak</h4><p>"Soy nómada, feminista, neurodivergente, una guerrera aprendiendo a vivir en paz."</p></div>
+      <div class="team-card"><div class="t-avatar ta2">J</div><h4>Javi</h4><p>"Soy trabajador social y terapeuta Gestalt."</p></div>
+      <div class="team-card"><div class="t-avatar ta3">M</div><h4>Miki</h4><p>"Soy analista de sistemas, ingeniero de software y un manitas!"</p></div>
+      <div class="team-card"><div class="t-avatar ta4">F</div><h4>Fran</h4><p>"Soy un Youtuber experto en animales de fama mundial."</p></div>
+    </div>
+  </div>
+</div></div></section>
+
+<!-- ===== PROYECTOS ===== -->
+<section id="proyectos"><div class="container">
+  <div class="reveal">
+    <div class="sec-label">Lo que hacemos</div>
+    <h2 class="sec-title">Nuestros <span class="grd">proyectos</span></h2>
+    <p class="sec-sub">Consulta nuestros proyectos. Estamos seguros de que encontrarás alguno que se adapte a ti.</p>
+  </div>
+  <div class="proy-grid">
+    <div class="card reveal d1"><div class="thumb pb1">📚<span class="tag">Local</span></div><div class="body"><h3>Catálogo de Actividades</h3><p>Una compilación de actividades que ofrecemos a entidades y colectivos locales en El Ejido y alrededores, con el fin de crear una red de cooperación en ámbitos de juventud, inclusión y diversidad.</p><a class="more" href="https://www.divergimentes.org/nuestros-proyectos/catalogo-de-actividades/" target="_blank" rel="noopener">Ver proyecto →</a></div></div>
+    <div class="card reveal d2"><div class="thumb pb2">🎭<span class="tag">Erasmus+</span></div><div class="body"><h3>AONDY – Aesthetics of the Oppressed &amp; Neurodivergent Youth</h3><p>Proyecto de movilidad para trabajadores juveniles que busca mejorar la calidad del trabajo en torno a la neurodiversidad y la inclusión mediante herramientas artísticas y creativas. Curso de formación de 7 días en Andalucía.</p><a class="more" href="https://www.divergimentes.org/nuestros-proyectos/aesthetics-of-the-oppressed-neurodivergent-youth-training-course-on-neurodiversity/" target="_blank" rel="noopener">Ver proyecto →</a></div></div>
+    <div class="card reveal d3"><div class="thumb pb3">🌿<span class="tag">Ecología</span></div><div class="body"><h3>El Refugio de Almócita</h3><p>Un proyecto de "terraformación" de una antigua granja cinegética en Almócita. El objetivo es transformar 6.000 m² de terreno pedregoso en un oasis de biodiversidad, con árboles, estanques y cobijo para animales.</p><a class="more" href="https://www.divergimentes.org/nuestros-proyectos/el-refugio-de-almocita/" target="_blank" rel="noopener">Ver proyecto →</a></div></div>
+  </div>
+</div></section>
+
+<!-- ===== BLOG ===== -->
+<section id="blog"><div class="container">
+  <div class="blog-top reveal">
+    <div><div class="sec-label">Últimas entradas</div><h2 class="sec-title" style="margin:0">Blog de <span class="grd">Divergimentes</span></h2></div>
+    <a href="https://www.divergimentes.org/blog/" class="btn btn-outline" target="_blank" rel="noopener">Ver todos los artículos →</a>
+  </div>
+  <div class="blog-grid">
+    <div class="card featured reveal d1"><div class="thumb pb4">🎨<span class="tag">Arte &amp; Creatividad</span></div><div class="body"><div class="date">14 de noviembre de 2022</div><h3>Se buscan artistas / Artists wanted</h3><p>¿Te apetece compartir un trozo de tu creatividad con nosotros? Nos encantaría tener un "rincón de artistas" en el que compartimos expresiones personales en relación a salud mental y neurodiversidad. Pedimos a "jóvenes en alma" de todas las edades y de cualquier parte del mundo que nos envíen sus obras.</p><a class="more" href="https://www.divergimentes.org/noticias/se-buscan-artistas-artists-wanted/" target="_blank" rel="noopener">Leer artículo →</a></div></div>
+    <div class="card reveal d2"><div class="thumb pb5">🧠<span class="tag">Neurodiversidad</span></div><div class="body"><div class="date">7 de octubre de 2022</div><h3>Neurodivergencia: la discapacidad invisible</h3><p>La salud mental es uno de los problemas más grandes a los que se enfrentan los jóvenes hoy en día...</p><a class="more" href="https://www.divergimentes.org/noticias/neurodivergencia-la-discapacidad-invisible/" target="_blank" rel="noopener">Leer artículo →</a></div></div>
+    <div class="card reveal d3"><div class="thumb pb6">🌍<span class="tag">Proyectos</span></div><div class="body"><div class="date">6 de octubre de 2022</div><h3>New Project! AONDY</h3><p>The project Aesthetics of Oppressed and Neurodivergent Youth (AONDY) is a mobility project for youth workers to improve our work around neurodiversity...</p><a class="more" href="https://www.divergimentes.org/proyectos/new-project-aondy/" target="_blank" rel="noopener">Leer artículo →</a></div></div>
+    <div class="card reveal d1"><div class="thumb pb7">📢<span class="tag">Noticias</span></div><div class="body"><div class="date">8 de agosto de 2022</div><h3>Divergimentes abre su página web</h3><p>Estamos abriendo nuestra página web para que puedas conocer la asociación, cuáles son sus metas, objetivos y proyectos...</p><a class="more" href="https://www.divergimentes.org/noticias/divergimentes-abre-su-pagina-web/" target="_blank" rel="noopener">Leer artículo →</a></div></div>
+  </div>
+</div></section>
+
+<!-- ===== GLOSARIO ===== -->
+<section id="glosario"><div class="container"><div class="glos-layout">
+  <div class="reveal">
+    <span class="glos-emoji">🦉</span>
+    <div class="sec-label">Aprende con nosotros</div>
+    <h2 class="sec-title">Neuro<span class="grd">...¿qué?</span></h2>
+    <p class="sec-sub" style="margin-bottom:26px">Te explicamos los términos básicos que usamos cuando hablamos de neurodiversidad e inclusión. Porque entender es el primer paso para el cambio.</p>
+    <a href="https://www.divergimentes.org/glosario/" class="btn btn-primary" target="_blank" rel="noopener">Ver glosario completo →</a>
+  </div>
+  <div class="glos-terms reveal d2">
+    <div class="term"><b>Neurodiversidad</b><span>La variación natural en el funcionamiento cerebral y conductual humano. Incluye condiciones como TDAH, autismo, dislexia y otras.</span></div>
+    <div class="term"><b>Neurodivergente</b><span>Persona cuyo cerebro funciona de forma diferente a lo que se considera "típico". No es un defecto, es una diferencia.</span></div>
+    <div class="term"><b>Inclusión</b><span>Proceso de integración plena de todas las personas en la sociedad, garantizando acceso equitativo a derechos y oportunidades.</span></div>
+    <div class="term"><b>TDAH</b><span>Trastorno por Déficit de Atención e Hiperactividad. Un tipo de neurodivergencia caracterizado por dificultades en la atención y el control de impulsos.</span></div>
+    <div class="term"><b>TEA / Autismo</b><span>Trastorno del Espectro Autista. Condición neurodivergente que afecta la comunicación social y puede implicar intereses focalizados.</span></div>
+    <div class="term"><b>Educación no formal</b><span>Aprendizaje intencional fuera del sistema educativo tradicional, con enfoque en la práctica y la experiencia directa.</span></div>
+  </div>
+</div></div></section>
+
+<!-- ===== TERRITORIO ===== -->
+<section id="territorio"><div class="container">
+  <div class="center reveal">
+    <div class="sec-label">Dónde estamos</div>
+    <h2 class="sec-title">Nuestro <span class="grd">territorio</span></h2>
+    <p class="sec-sub">Nacemos en Andalucía con vocación global. Actuamos local para inspirar cambios universales.</p>
+  </div>
+  <div class="terr-grid">
+    <div class="terr-card reveal d1"><span>☀️</span><h3>Almería</h3><p>Nuestra provincia. Base de operaciones y corazón de nuestra comunidad.</p></div>
+    <div class="terr-card reveal d2"><span>🏘️</span><h3>El Ejido</h3><p>Municipio principal donde desarrollamos nuestras actividades locales y talleres.</p></div>
+    <div class="terr-card reveal d3"><span>🌿</span><h3>Almócita</h3><p>Pueblo de la Alpujarra donde nace El Refugio, nuestro proyecto de biodiversidad.</p></div>
+  </div>
+</div></section>
+
+<!-- ===== CTA ===== -->
+<section id="cta"><div class="container"><div class="cta-box reveal">
+  <h2>¿Quieres ser parte del <span class="grd">cambio</span>?</h2>
+  <p>Si compartes nuestra visión de una sociedad más inclusiva, participativa y respetuosa con la diversidad humana, nos encantaría escucharte.</p>
+  <div class="cta-btns">
+    <a href="https://www.divergimentes.org/contacto/" class="btn btn-primary" target="_blank" rel="noopener">Escríbenos 💬</a>
+    <a href="https://www.divergimentes.org/nuestros-proyectos/" class="btn btn-outline" target="_blank" rel="noopener">Explorar proyectos</a>
+  </div>
+</div></div></section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="logo"><span class="logo-blob">🧠</span>Divergimentes</div>
+      <p>...para una sociedad más inclusiva y participativa. Trabajamos por la inclusión de personas neurodivergentes, jóvenes y mujeres en Almería, España.</p>
+      <div class="socials">
+        <a href="https://www.facebook.com/divergimentes" target="_blank" rel="noopener" aria-label="Facebook">f</a>
+        <a href="https://twitter.com/divergimentes" target="_blank" rel="noopener" aria-label="X / Twitter">𝕏</a>
+        <a href="https://bsky.app" target="_blank" rel="noopener" aria-label="Bluesky">🦋</a>
+        <a href="https://www.threads.net" target="_blank" rel="noopener" aria-label="Threads">@</a>
+      </div>
+    </div>
+    <div><h4>Navegación</h4><ul><li><a href="#hero">Inicio</a></li><li><a href="#valores">Valores</a></li><li><a href="#quienes">¿Quiénes somos?</a></li><li><a href="#proyectos">Proyectos</a></li><li><a href="#blog">Blog</a></li><li><a href="#cta">Contacto</a></li></ul></div>
+    <div><h4>Proyectos</h4><ul><li><a href="https://www.divergimentes.org/nuestros-proyectos/catalogo-de-actividades/" target="_blank" rel="noopener">Catálogo de Actividades</a></li><li><a href="https://www.divergimentes.org/nuestros-proyectos/aesthetics-of-the-oppressed-neurodivergent-youth-training-course-on-neurodiversity/" target="_blank" rel="noopener">AONDY</a></li><li><a href="https://www.divergimentes.org/nuestros-proyectos/el-refugio-de-almocita/" target="_blank" rel="noopener">El Refugio de Almócita</a></li></ul></div>
+    <div><h4>Contacto</h4><ul><li><a href="https://www.divergimentes.org/contacto/" target="_blank" rel="noopener">Formulario de contacto</a></li><li><a href="https://www.divergimentes.org/blog/" target="_blank" rel="noopener">Blog</a></li><li><a href="https://www.divergimentes.org/glosario/" target="_blank" rel="noopener">Glosario</a></li><li><a href="https://www.divergimentes.org/quienes-somos/" target="_blank" rel="noopener">El equipo</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><p>© 2026 <a href="https://www.divergimentes.org" target="_blank" rel="noopener">Divergimentes</a>. Todos los derechos reservados.</p><p>Hecho con ❤️ para una sociedad más inclusiva</p></div>
+</footer>
+
+<script>
+/* ===== DIVERGIMENTES · script ===== */
+const $=s=>document.querySelector(s),$$=s=>document.querySelectorAll(s);
+const navbar=$('#navbar'),bar=$('#progress'),links=$$('.nav-links a:not(.nav-cta)'),secs=$$('section[id]');
+function onScroll(){
+  navbar.classList.toggle('scrolled',scrollY>60);
+  const t=document.documentElement.scrollHeight-innerHeight;
+  bar.style.width=(t>0?scrollY/t*100:0)+'%';
+  let cur='';secs.forEach(s=>{if(s.getBoundingClientRect().top<=120)cur=s.id});
+  links.forEach(l=>l.classList.toggle('active',l.getAttribute('href')==='#'+cur));
+}
+addEventListener('scroll',onScroll,{passive:true});onScroll();
+/* Menú móvil */
+const burger=$('#burger'),menu=$('#mmenu'),ov=$('#overlay');
+function toggleMenu(open){
+  burger.classList.toggle('active',open);menu.classList.toggle('active',open);ov.classList.toggle('active',open);
+  burger.setAttribute('aria-expanded',open);document.body.style.overflow=open?'hidden':'';
+}
+burger.onclick=()=>toggleMenu(!menu.classList.contains('active'));
+ov.onclick=()=>toggleMenu(false);
+menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>toggleMenu(false)));
+/* Partículas */
+const pc=$('#particles');
+for(let i=0;i<(innerWidth<768?15:30);i++){
+  const p=document.createElement('div'),s=Math.random()*3+1;
+  p.className='particle';
+  p.style.cssText=`width:${s}px;height:${s}px;left:${Math.random()*100}%;animation-duration:${Math.random()*12+10}s;animation-delay:${Math.random()*15}s`;
+  pc.appendChild(p);
+}
+/* Aparición al hacer scroll */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target)}}),{threshold:.12,rootMargin:'0px 0px -60px 0px'});
+$$('.reveal').forEach(el=>io.observe(el));
+/* Scroll suave con margen para la barra */
+$$('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{
+  const t=document.getElementById(a.getAttribute('href').slice(1));
+  if(t){e.preventDefault();scrollTo({top:t.getBoundingClientRect().top+scrollY-80,behavior:'smooth'})}
+}));
+/* Contadores del hero */
+const hs=$('.hero-stats');
+if(hs)new IntersectionObserver((es,o)=>{es.forEach(e=>{if(!e.isIntersecting)return;
+  e.target.querySelectorAll('.stat-num').forEach(el=>{
+    const m=el.textContent.match(/^(\d+)(.*)/);if(!m)return;
+    const end=+m[1];let c=0;const t=setInterval(()=>{c+=end/60;if(c>=end){clearInterval(t);el.textContent=end+m[2]}else el.textContent=Math.floor(c)+m[2]},20);
+  });o.unobserve(e.target)})},{threshold:.5}).observe(hs);
+</script>
+</body>
+</html>
